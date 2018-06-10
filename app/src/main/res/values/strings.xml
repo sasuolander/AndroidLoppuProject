@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">HackerNewApp</string>
+    <string name="dummy">dummy</string>
 </resources>

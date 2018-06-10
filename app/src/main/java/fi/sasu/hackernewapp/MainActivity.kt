@@ -10,12 +10,14 @@ class MainActivity : AppCompatActivity() {
 
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.menu, menu)
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when (item.itemId){
-        R.id.dummy ->{
-            this.startActivity(Intent(this@MainActivity, Dummy::class.java))
+        R.id.dummy1 ->{
+            this.startActivity(Intent(this@MainActivity, MainActivity::class.java))
             true
         }
         else ->super.onOptionsItemSelected(item)
@@ -37,5 +39,4 @@ class MainActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
     }
-
 }
