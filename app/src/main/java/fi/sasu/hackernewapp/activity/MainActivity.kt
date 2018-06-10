@@ -1,10 +1,11 @@
-package fi.sasu.hackernewapp
+package fi.sasu.hackernewapp.activity
 
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import fi.sasu.hackernewapp.R
 
 class MainActivity : AppCompatActivity() {
 
