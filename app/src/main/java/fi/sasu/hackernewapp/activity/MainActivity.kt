@@ -13,14 +13,14 @@ import fi.sasu.hackernewapp.method.RequestApi
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonArrayRequest
 import fi.sasu.hackernewapp.helperclass
-import fi.sasu.hackernewapp.service.MyInit
+import fi.sasu.hackernewapp.service.MyApplication
 import org.json.JSONArray
 
 
 class MainActivity : AppCompatActivity() {
 
 
-    var myInit:MyInit= MyInit()
+
     var helperclass:helperclass=helperclass()
     var requestApi:RequestApi = RequestApi()
 
@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        //val topstories = topstories()
+        topstories()
 
         //val x= topstories.getString(0)
 
@@ -79,17 +79,14 @@ class MainActivity : AppCompatActivity() {
     }*/
 
 
-    fun topstories(): JSONArray {
-        var output : JSONArray =JSONArray()
+    private fun topstories() {
         val topstoriesJsonArrayRequest = JsonArrayRequest(Request.Method.GET,requestApi.topstories,null,
-                Response.Listener { response ->
-                    Log.i(helperclass.userNameForLogging,response.getString(0))
-                    output =JSONArray(response)
+                Response.Listener<JSONArray> { response ->
+                    val res =response
                 },
                 Response.ErrorListener { error -> }
         )
-        //myInit.queue.add(topstoriesJsonArrayRequest)
+        MyApplication.instance?.addToRequestQueue(topstoriesJsonArrayRequest, "json")
         //queue.start()
-        return output
     }
 }
