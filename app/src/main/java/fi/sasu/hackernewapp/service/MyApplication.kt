@@ -5,6 +5,7 @@ import android.text.TextUtils
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.Volley
+import com.couchbase.lite.Database
 
 
 open class MyApplication : Application() {
@@ -14,7 +15,21 @@ open class MyApplication : Application() {
             instance = this
         }
 
-        val requestQueue: RequestQueue? = null
+        val DatabaseName:String? ="hackapp"
+        val username:String? =DatabaseName
+        val database: Database?=null
+
+    var topstoriesInstant:List<String>?=null
+    var newstoriesInstant:List<String>?=null
+    var showstoriesInstant:List<String>?=null
+    var askstoriesInstant:List<String>?=null
+    var jobstoriesInstant:List<String>?=null
+
+
+
+
+
+    val requestQueue: RequestQueue? = null
             get() {
                 if (field == null) {
                     return Volley.newRequestQueue(applicationContext)

@@ -2,19 +2,30 @@ package fi.sasu.hackernewapp.activity
 
 
 import android.content.Intent
+import android.graphics.ColorSpace
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.LinearLayout
 import com.android.volley.Request
 import fi.sasu.hackernewapp.R
 import fi.sasu.hackernewapp.method.RequestApi
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonArrayRequest
+import com.google.gson.Gson
+import fi.sasu.hackernewapp.`object`.ID_List
 import fi.sasu.hackernewapp.helperclass
 import fi.sasu.hackernewapp.service.MyApplication
 import org.json.JSONArray
+import org.json.JSONObject
+import com.google.gson.reflect.TypeToken
+import java.util.stream.Collectors.mapping
+import com.google.gson.JsonElement
+
+
 
 
 class MainActivity : AppCompatActivity() {
@@ -79,14 +90,6 @@ class MainActivity : AppCompatActivity() {
     }*/
 
 
-    private fun topstories() {
-        val topstoriesJsonArrayRequest = JsonArrayRequest(Request.Method.GET,requestApi.topstories,null,
-                Response.Listener<JSONArray> { response ->
-                    val res =response
-                },
-                Response.ErrorListener { error -> }
-        )
-        MyApplication.instance?.addToRequestQueue(topstoriesJsonArrayRequest, "json")
-        //queue.start()
-    }
+
+
 }
