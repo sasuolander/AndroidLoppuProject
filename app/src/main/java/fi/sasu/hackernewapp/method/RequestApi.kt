@@ -26,8 +26,9 @@ class RequestApi  {
 
 
     fun itemobject(id:Int):Item?{
+        val jsonID="$id.json"
         var itemobjecResponse:Item?=null
-        val itemJSONObject =JsonObjectRequest(Request.Method.GET,itemURl+id,null,
+        val itemJSONObject =JsonObjectRequest(Request.Method.GET,itemURl+jsonID,null,
                 Response.Listener<JSONObject> { response ->
                 itemobjecResponse= convertObject(response) },
                 Response.ErrorListener { error ->
@@ -88,7 +89,9 @@ class RequestApi  {
         //initialize gson object
         val gson = Gson()
         //get data from gson and assign to object
-        return gson.fromJson<Item>(response.toString(), Item::class.java) }
+        val output =gson.fromJson<Item>(response.toString() , Item::class.java)
+        output.kidsObject
+        return output }
 
     private fun convert (response: JSONArray):MutableSet<String> {
         //initialize gson object

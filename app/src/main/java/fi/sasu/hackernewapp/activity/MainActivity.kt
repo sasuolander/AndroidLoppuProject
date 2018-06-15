@@ -8,6 +8,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.*
 import fi.sasu.hackernewapp.R
+import fi.sasu.hackernewapp.`object`.Item
 import fi.sasu.hackernewapp.method.RequestApi
 import fi.sasu.hackernewapp.helperclass
 import fi.sasu.hackernewapp.service.MyApplication
@@ -35,13 +36,15 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        requestApi.jobstories()
+        //requestApi.jobstories()
 
-        val listJob:Set<String>? =MyApplication.instance?.jobstoriesInstant
+        //val itemX: Item? =requestApi.itemobject(20)
+        //helperclass.naytaToast(itemX.toString(),applicationContext)
+        //val listJob:Set<String>? =MyApplication.instance?.jobstoriesInstant
         //val x= topstories.getString(0)
 
         //Log.d(helperclass.userNameForLogging,x)
-
+/*
         val litview: ListView = findViewById(R.id.list_viewTest)
 
         if ( listJob !=null && listJob.isNotEmpty()) {
@@ -51,6 +54,7 @@ class MainActivity : AppCompatActivity() {
             )
             litview.adapter =adapter
         }
+        */
     }
 
    /* override fun onPause() {
@@ -64,8 +68,5 @@ class MainActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
     }*/
-
-
-
 
 }

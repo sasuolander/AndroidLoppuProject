@@ -6,5 +6,5 @@ import com.google.gson.annotations.SerializedName
 class ID_List{
     @SerializedName("")
     @Expose
-    var id:Int?=null
+    var idObject:Int?=null
 }
