@@ -19,15 +19,11 @@ open class MyApplication : Application() {
         val username:String? =DatabaseName
         val database: Database?=null
 
-    var topstoriesInstant:List<String>?=null
-    var newstoriesInstant:List<String>?=null
-    var showstoriesInstant:List<String>?=null
-    var askstoriesInstant:List<String>?=null
-    var jobstoriesInstant:List<String>?=null
-
-
-
-
+    var topstoriesInstant: MutableSet<String> = HashSet()
+    var newstoriesInstant: MutableSet<String> = HashSet()
+    var showstoriesInstant: MutableSet<String> = HashSet()
+    var askstoriesInstant: MutableSet<String> = HashSet()
+    var jobstoriesInstant: MutableSet<String> = HashSet()
 
     val requestQueue: RequestQueue? = null
             get() {
