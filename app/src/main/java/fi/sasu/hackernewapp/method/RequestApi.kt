@@ -36,7 +36,7 @@ class RequestApi  {
         val itemJSONObject =JsonObjectRequest(Request.Method.GET,itemURl+jsonID,null,
                 Response.Listener<JSONObject> { response ->
 
-                    db.save(response)
+
                 itemobjecResponse= convertObject(response) },
                 Response.ErrorListener { error ->
                     Log.d(helper.userNameForLogging,error.toString()) })

@@ -7,8 +7,10 @@ import com.android.volley.RequestQueue
 import com.android.volley.toolbox.Volley
 import com.couchbase.lite.Database
 import com.couchbase.lite.DatabaseConfiguration
+import com.couchbase.lite.MutableDocument
 import fi.sasu.hackernewapp.helperclass
 import java.io.IOException
+import java.lang.reflect.Array.setFloat
 
 open class MyApplication : Application() {
 
@@ -18,6 +20,8 @@ open class MyApplication : Application() {
         var askstoriesInstant: MutableSet<String> = HashSet()
         var jobstoriesInstant: MutableSet<String> = HashSet()
         var database:Database?=null
+    var documentItem: MutableDocument=MutableDocument().setFloat("version", 2.0F)
+            .setString("type", "SDK")
         val helperclass:helperclass= helperclass()
 
         override fun onCreate() {
@@ -29,17 +33,15 @@ open class MyApplication : Application() {
                 val config = DatabaseConfiguration(applicationContext)
                  database = Database("mydb", config)
 
+
+
             }
             catch (e:IOException) {
                 helperclass.naytaToast(e.toString(),applicationContext)
             }
+            database?.save(documentItem)
 
         }
-
-
-
-
-
     val requestQueue: RequestQueue? = null
             get() {
                 if (field == null) {
