@@ -1,10 +1,10 @@
-package fi.sasu.hackernewapp.`object`
+package fi.sasu.hackernewapp.ItemObject
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
 
-class Item {
+class Model {
     @SerializedName("by")
     @Expose
     var byObject:String? =null
@@ -16,7 +16,7 @@ class Item {
     var idObject:Int? =null
     @SerializedName("kids")
     @Expose
-    var kidsObject:ArrayList<ID_List>? = null
+    var kidsObject:ArrayList<Id>? = null
     @SerializedName("score")
     @Expose
     var scoreObject:Int? =null

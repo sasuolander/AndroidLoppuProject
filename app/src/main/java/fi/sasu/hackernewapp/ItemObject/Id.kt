@@ -1,9 +1,9 @@
-package fi.sasu.hackernewapp.`object`
+package fi.sasu.hackernewapp.ItemObject
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-class ID_List{
+class Id{
     @SerializedName("")
     @Expose
     var idObject:Int?=null

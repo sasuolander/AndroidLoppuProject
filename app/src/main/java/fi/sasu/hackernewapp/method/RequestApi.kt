@@ -1,13 +1,16 @@
 package fi.sasu.hackernewapp.method
 
+import android.app.Application
 import android.util.Log
 import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.JsonObjectRequest
+import com.couchbase.lite.Database
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import fi.sasu.hackernewapp.`object`.Item
+
+import fi.sasu.hackernewapp.ItemObject.Model
 import fi.sasu.hackernewapp.helperclass
 import fi.sasu.hackernewapp.service.MyApplication
 import org.json.JSONArray
@@ -25,11 +28,15 @@ class RequestApi  {
 
 
 
-    fun itemobject(id:Int):Item?{
+    val db:Database?=MyApplication.instance?.database
+
+    fun itemobject(id:Int):Model?{
         val jsonID="$id.json"
-        var itemobjecResponse:Item?=null
+        var itemobjecResponse:Model?=null
         val itemJSONObject =JsonObjectRequest(Request.Method.GET,itemURl+jsonID,null,
                 Response.Listener<JSONObject> { response ->
+
+                    db.save(response)
                 itemobjecResponse= convertObject(response) },
                 Response.ErrorListener { error ->
                     Log.d(helper.userNameForLogging,error.toString()) })
@@ -85,11 +92,11 @@ class RequestApi  {
         MyApplication.instance?.addToRequestQueue(topstoriesJsonArrayRequest, "json") }
 
 
-    private fun convertObject (response: JSONObject): Item {
+    private fun convertObject (response: JSONObject): Model {
         //initialize gson object
         val gson = Gson()
         //get data from gson and assign to object
-        val output =gson.fromJson<Item>(response.toString() , Item::class.java)
+        val output =gson.fromJson<Model>(response.toString() , Model::class.java)
         output.kidsObject
         return output }
 

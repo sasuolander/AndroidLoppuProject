@@ -7,17 +7,19 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.*
+import com.couchbase.lite.Database
+import com.couchbase.lite.DatabaseConfiguration
 import fi.sasu.hackernewapp.R
-import fi.sasu.hackernewapp.`object`.Item
 import fi.sasu.hackernewapp.method.RequestApi
 import fi.sasu.hackernewapp.helperclass
-import fi.sasu.hackernewapp.service.MyApplication
 
 
 class MainActivity : AppCompatActivity() {
     var adapter:ArrayAdapter<String>?=null
     var helperclass:helperclass=helperclass()
     var requestApi:RequestApi = RequestApi()
+
+
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         val inflater = menuInflater
@@ -36,25 +38,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        //requestApi.jobstories()
 
-        //val itemX: Item? =requestApi.itemobject(20)
-        //helperclass.naytaToast(itemX.toString(),applicationContext)
-        //val listJob:Set<String>? =MyApplication.instance?.jobstoriesInstant
-        //val x= topstories.getString(0)
-
-        //Log.d(helperclass.userNameForLogging,x)
-/*
-        val litview: ListView = findViewById(R.id.list_viewTest)
-
-        if ( listJob !=null && listJob.isNotEmpty()) {
-            adapter = ArrayAdapter(this,
-                    android.R.layout.simple_expandable_list_item_1,
-                    listJob.toTypedArray()
-            )
-            litview.adapter =adapter
-        }
-        */
     }
 
    /* override fun onPause() {
@@ -70,3 +54,24 @@ class MainActivity : AppCompatActivity() {
     }*/
 
 }
+
+/*
+requestApi.jobstories()
+
+val itemX: Item? =requestApi.itemobject(20)
+helperclass.naytaToast(itemX.toString(),applicationContext)
+val listJob:Set<String>? =MyApplication.instance?.jobstoriesInstant
+val x= topstories.getString(0)
+
+Log.d(helperclass.userNameForLogging,x)
+
+        val litview: ListView = findViewById(R.id.list_viewTest)
+
+        if ( listJob !=null && listJob.isNotEmpty()) {
+            adapter = ArrayAdapter(this,
+                    android.R.layout.simple_expandable_list_item_1,
+                    listJob.toTypedArray()
+            )
+            litview.adapter =adapter
+        }
+        */
