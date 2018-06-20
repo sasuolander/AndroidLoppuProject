@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/fragmentpage"
-    android:title="@string/dummy"
+    android:title="@string/fragment"
     />
     <item
         android:id="@+id/dummy2"

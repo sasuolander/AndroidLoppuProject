@@ -28,8 +28,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when (item.itemId){
-        R.id.dummy1 ->{
-            this.startActivity(Intent(this@MainActivity, MainActivity::class.java))
+        R.id.fragmentpage ->{
+            this.startActivity(Intent(this@MainActivity, fi.sasu.hackernewapp.Fragment.ItemFragment::class.java))
             true
         }
         else ->super.onOptionsItemSelected(item)
