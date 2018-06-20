@@ -7,10 +7,8 @@
     tools:context=".activity.MainActivity">
 
 
-    <ListView
-        android:id="@+id/list_viewTest"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="47dp"
-        tools:layout_editor_absoluteY="0dp" />
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/mainview"/>
 </android.support.constraint.ConstraintLayout>

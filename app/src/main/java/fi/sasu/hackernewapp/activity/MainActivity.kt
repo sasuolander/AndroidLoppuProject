@@ -4,11 +4,13 @@ package fi.sasu.hackernewapp.activity
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v4.view.ViewPager
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.*
 import com.couchbase.lite.Database
 import com.couchbase.lite.DatabaseConfiguration
+import fi.sasu.hackernewapp.Fragment.ItemAdapter
 import fi.sasu.hackernewapp.R
 import fi.sasu.hackernewapp.method.RequestApi
 import fi.sasu.hackernewapp.helperclass
@@ -18,6 +20,8 @@ class MainActivity : AppCompatActivity() {
     var adapter:ArrayAdapter<String>?=null
     var helperclass:helperclass=helperclass()
     var requestApi:RequestApi = RequestApi()
+    val viewPager: ViewPager?=null
+    val itemAdapter:ItemAdapter=ItemAdapter()
 
 
 
@@ -29,7 +33,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when (item.itemId){
         R.id.fragmentpage ->{
-            this.startActivity(Intent(this@MainActivity, fi.sasu.hackernewapp.Fragment.ItemFragment::class.java))
+            this.startActivity(Intent(this@MainActivity, this@MainActivity::class.java))
             true
         }
         else ->super.onOptionsItemSelected(item)

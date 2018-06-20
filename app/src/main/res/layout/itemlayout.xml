@@ -1,48 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
-    android:layout_width="match_parent"
+
+
+<RelativeLayout android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+
     >
 
-    <TextView
-        android:layout_width="10dp"
-        android:layout_height="20dp"
-        android:text="Title"
-        />
 
-
-    <TextView
-        android:layout_width="10dp"
-        android:layout_height="20dp"
-        android:text="Time"
-        />
-    <TextView
-        android:layout_width="10dp"
-        android:layout_height="20dp"
-        android:text="url"
-        />
-
-    <LinearLayout
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/alla"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingTop="1000dp">
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="30dp"
+            android:layout_height="20dp"
+            android:text="Title" />
 
 
         <TextView
-            android:layout_width="10dp"
+            android:layout_width="30dp"
+            android:layout_height="20dp"
+            android:text="url" />
+
+        <TextView
+            android:layout_width="37dp"
+            android:layout_height="20dp"
+            android:text="Time" />
+
+
+    </LinearLayout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/alla"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:layout_width="45dp"
             android:layout_height="20dp"
             android:text="score" />
 
         <TextView
-            android:layout_width="10dp"
+            android:layout_width="40dp"
             android:layout_height="20dp"
             android:text="Time" />
 
         <TextView
-            android:layout_width="10dp"
+            android:layout_width="30dp"
             android:layout_height="20dp"
             android:text="By" />
     </LinearLayout>
-</LinearLayout>
+
+</RelativeLayout>
