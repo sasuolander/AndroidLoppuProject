@@ -3,35 +3,22 @@ package fi.sasu.hackernewapp.ItemObject
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
+data class Model(
+        @SerializedName("id") @Expose var idObject:Int? =null,
+        @SerializedName("title") @Expose var titleObject:String?=null,
+        @SerializedName("score") @Expose var scoreObject:Int? =null,
+        @SerializedName("by") @Expose var byObject:String? =null,
+        @SerializedName("time") @Expose var timeObject:Int?=null,
+        @SerializedName("type") @Expose var typeObject:String?=null,
+        @SerializedName("url") @Expose var urlObject:String?=null) {
 
-class Model {
-    @SerializedName("by")
-    @Expose
-    var byObject:String? =null
     @SerializedName("descendants")
     @Expose
     var descendantsObject:Int? =null
-    @SerializedName("id")
-    @Expose
-    var idObject:Int? =null
+
     @SerializedName("kids")
     @Expose
     var kidsObject:ArrayList<Id>? = null
-    @SerializedName("score")
-    @Expose
-    var scoreObject:Int? =null
-    @SerializedName("time")
-    @Expose
-    var timeObject:Int?=null
-    @SerializedName("title")
-    @Expose
-    var titleObject:String?=null
-    @SerializedName("type")
-    @Expose
-    var typeObject:String?=null
-    @SerializedName("url")
-    @Expose
-    var urlObject:String?=null
 }
 /*
 {

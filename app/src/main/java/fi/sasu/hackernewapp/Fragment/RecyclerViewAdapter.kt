@@ -28,17 +28,18 @@ class RecyclerViewAdapter: RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder
     }
 
     override fun getItemCount(): Int {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return itemList.size
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    class MyViewHolder:RecyclerView.ViewHolder(){
-
-        fun MyViewHolder(itemView: View){
-            super.itemView
+    class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
+        fun bind(model: Model, listener: (Model) -> Unit) = with(itemView) {
+            itemTitle.text =
+            itemImage.loadUrl(item.url)
+            setOnClickListener { listener(item) }
         }
     }
 
