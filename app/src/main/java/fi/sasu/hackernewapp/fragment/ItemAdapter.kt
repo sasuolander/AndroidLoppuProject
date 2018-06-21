@@ -14,12 +14,16 @@ class ItemAdapter(fm: FragmentManager) : FragmentPagerAdapter( fm) {
     }
 
     override fun getCount(): Int {
-       return itemFragmentList.size
+       return itemFragmentList.keys.size
     }
 
 
     fun  addFragment(fragment: Fragment,title:String){
         itemFragmentList[fragment]=title
 
+    }
+
+    override fun getPageTitle(position: Int): CharSequence {
+        return itemFragmentList.values.elementAt(position)
     }
 }

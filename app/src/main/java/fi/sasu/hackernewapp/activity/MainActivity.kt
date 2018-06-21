@@ -15,13 +15,11 @@ import fi.sasu.hackernewapp.helperclass
 
 
 class MainActivity : AppCompatActivity() {
-    var adapter:ArrayAdapter<String>?=null
+    /*var adapter:ArrayAdapter<String>?=null
     var helperclass:helperclass=helperclass()
     var requestApi:RequestApi = RequestApi()
     val viewPager: ViewPager?=null
-    val itemAdapter:ItemAdapter=ItemAdapter()
-
-
+    val itemAdapter:ItemAdapter=ItemAdapter()*/
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         val inflater = menuInflater

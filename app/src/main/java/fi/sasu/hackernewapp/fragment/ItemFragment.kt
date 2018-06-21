@@ -18,14 +18,13 @@ class ItemFragment:Fragment(){
 
 
 
-    val itemsFragment:ItemAdapter=ItemAdapter()
+    //val itemsFragment:ItemAdapter=ItemAdapter()
     val itemsForTest=ArrayList<Model>()
     val helperclass = helperclass()
 
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        val v:View = layoutInflater.inflate(R.layout.itemlayout,container,false)
-
+        val v:View = LayoutInflater.from(context).inflate(R.layout.itemlayout,container,false)
         val recyclerView:RecyclerView= RecyclerView(context)
         recyclerView.layoutManager=LinearLayoutManager(context)
         recyclerView.adapter=RecyclerViewAdapter(itemsForTest){
