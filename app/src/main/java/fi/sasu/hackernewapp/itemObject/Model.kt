@@ -1,4 +1,4 @@
-package fi.sasu.hackernewapp.ItemObject
+package fi.sasu.hackernewapp.itemObject
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName

@@ -1,6 +1,5 @@
 package fi.sasu.hackernewapp.method
 
-import android.app.Application
 import android.util.Log
 import com.android.volley.Request
 import com.android.volley.Response
@@ -10,7 +9,7 @@ import com.couchbase.lite.Database
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
-import fi.sasu.hackernewapp.ItemObject.Model
+import fi.sasu.hackernewapp.itemObject.Model
 import fi.sasu.hackernewapp.helperclass
 import fi.sasu.hackernewapp.service.MyApplication
 import org.json.JSONArray

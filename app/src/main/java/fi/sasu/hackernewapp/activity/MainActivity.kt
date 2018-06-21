@@ -8,9 +8,7 @@ import android.support.v4.view.ViewPager
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.*
-import com.couchbase.lite.Database
-import com.couchbase.lite.DatabaseConfiguration
-import fi.sasu.hackernewapp.Fragment.ItemAdapter
+import fi.sasu.hackernewapp.fragment.ItemAdapter
 import fi.sasu.hackernewapp.R
 import fi.sasu.hackernewapp.method.RequestApi
 import fi.sasu.hackernewapp.helperclass

@@ -3,27 +3,22 @@
 
 <RelativeLayout android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-
-    >
-
-
+    xmlns:android="http://schemas.android.com/apk/res/android">
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/alla"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:orientation="horizontal">
-
         <TextView
             android:layout_width="30dp"
             android:layout_height="20dp"
+            android:id="@+id/IdTitle"
             android:text="Title" />
-
-
         <TextView
             android:layout_width="30dp"
             android:layout_height="20dp"
+            android:id="@+id/IdUrl"
             android:text="url" />
     </LinearLayout>
 
@@ -33,22 +28,22 @@
         android:layout_below="@+id/alla"
         android:gravity="center_horizontal"
         android:orientation="horizontal">
-
-
         <TextView
             android:layout_width="45dp"
             android:layout_height="20dp"
+            android:id="@+id/IdScore"
             android:text="score" />
 
         <TextView
             android:layout_width="40dp"
             android:layout_height="20dp"
+            android:id="@+id/IdTime"
             android:text="Time" />
 
         <TextView
             android:layout_width="30dp"
             android:layout_height="20dp"
+            android:id="@+id/IdBy"
             android:text="By" />
     </LinearLayout>
-
 </RelativeLayout>
