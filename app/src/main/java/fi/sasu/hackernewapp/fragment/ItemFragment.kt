@@ -17,6 +17,9 @@ import fi.sasu.hackernewapp.itemObject.Model
 class ItemFragment:Fragment(){
 
 
+    public fun ItemFragment(){
+
+    }
 
     //val itemsFragment:ItemAdapter=ItemAdapter()
     val itemsForTest=ArrayList<Model>()

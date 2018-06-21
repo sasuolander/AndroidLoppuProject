@@ -4,22 +4,23 @@ package fi.sasu.hackernewapp.activity
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v4.app.Fragment
 import android.support.v4.view.ViewPager
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.*
 import fi.sasu.hackernewapp.fragment.ItemAdapter
 import fi.sasu.hackernewapp.R
+import fi.sasu.hackernewapp.fragment.ItemFragment
 import fi.sasu.hackernewapp.method.RequestApi
 import fi.sasu.hackernewapp.helperclass
 
 
 class MainActivity : AppCompatActivity() {
-    /*var adapter:ArrayAdapter<String>?=null
+    var adapter:ArrayAdapter<String>?=null
     var helperclass:helperclass=helperclass()
     var requestApi:RequestApi = RequestApi()
-    val viewPager: ViewPager?=null
-    val itemAdapter:ItemAdapter=ItemAdapter()*/
+
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         val inflater = menuInflater
@@ -38,6 +39,16 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        //val viewPager: ViewPager = findViewById(R.id.mainview)
+        //val itemAdapter:ItemAdapter = ItemAdapter(supportFragmentManager)
+
+
+val supportFragment
+        //add Frangment
+
+
+
+
 
     }
 

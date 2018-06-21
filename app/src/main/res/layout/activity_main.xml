@@ -7,8 +7,12 @@
     tools:context=".activity.MainActivity">
 
 
-    <View
+    <android.support.v4.view.ViewPager
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/mainview"/>
+
+
+
+
 </android.support.constraint.ConstraintLayout>
