@@ -13,6 +13,13 @@
         android:id="@+id/mainview"/>
 
 
+    <fragment
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/testfragment"
+        android:name="fi.sasu.hackernewapp.fragment.ItemFragment"
+        tools:layout="@layout/itemlayout"
+        />
 
 
 </android.support.constraint.ConstraintLayout>

@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
     var adapter:ArrayAdapter<String>?=null
     var helperclass:helperclass=helperclass()
     var requestApi:RequestApi = RequestApi()
-
+    lateinit var supportFragment:String
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         val inflater = menuInflater
@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
         //val itemAdapter:ItemAdapter = ItemAdapter(supportFragmentManager)
 
 
-val supportFragment
+
         //add Frangment
 
 

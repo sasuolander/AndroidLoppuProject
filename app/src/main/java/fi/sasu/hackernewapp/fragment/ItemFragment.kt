@@ -37,8 +37,6 @@ class ItemFragment:Fragment(){
     }
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-
-
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,8 +47,4 @@ val testi:Model= Model(1,"testi",0,"testi",0)
         itemsForTest.add(testi)
         itemsForTest.add(testi)
     }
-
-
-
-
 }
