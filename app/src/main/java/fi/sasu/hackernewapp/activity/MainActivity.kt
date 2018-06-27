@@ -46,6 +46,14 @@ class MainActivity : AppCompatActivity() {
         //val viewPager: ViewPager = findViewById(R.id.mainview)
         //val itemAdapter:ItemAdapter = ItemAdapter(supportFragmentManager)
 
+        val testObject2 =requestApi.itemobject(10)
+
+        if (testObject2===null){
+            helperclass.naytaToast("null",applicationContext)
+        }else{
+            helperclass.naytaToast("toimii",applicationContext)
+        }
+
         val testi = Model(1,"testi",0,"testi",0)
         itemsForTest2.add(testi)
         itemsForTest2.add(testi)

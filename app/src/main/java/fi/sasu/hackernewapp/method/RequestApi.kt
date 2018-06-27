@@ -31,14 +31,15 @@ class RequestApi  {
 
     fun itemobject(id:Int):Model?{
         val jsonID="$id.json"
-        lateinit var itemObjecResponse:Model
+        //lateinit var itemObjecResponse:Model
         val itemJSONObject =JsonObjectRequest(Request.Method.GET,itemURl+jsonID,null,
                 Response.Listener<JSONObject> { response ->
-                itemObjecResponse= convertObject(response) },
+                MyApplication.instance?.itemObjecResponse= convertObject(response) },
                 Response.ErrorListener { error ->
                     Log.d(helper.userNameForLogging,error.toString()) })
         MyApplication.instance?.addToRequestQueue(itemJSONObject, "json")
-        return itemObjecResponse
+        return MyApplication.instance?.itemObjecResponse
+        //try cacth
     }
     fun topstories() {
 

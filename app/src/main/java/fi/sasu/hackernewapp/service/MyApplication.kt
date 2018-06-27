@@ -1,6 +1,7 @@
 package fi.sasu.hackernewapp.service
 
 import android.app.Application
+import android.graphics.ColorSpace
 import android.text.TextUtils
 import com.android.volley.Request
 import com.android.volley.RequestQueue
@@ -9,6 +10,7 @@ import com.couchbase.lite.Database
 import com.couchbase.lite.DatabaseConfiguration
 import com.couchbase.lite.MutableDocument
 import fi.sasu.hackernewapp.helperclass
+import fi.sasu.hackernewapp.itemObject.Model
 import java.io.IOException
 
 
@@ -18,6 +20,7 @@ open class MyApplication : Application() {
         var showstoriesInstant: MutableSet<String> = HashSet()
         var askstoriesInstant: MutableSet<String> = HashSet()
         var jobstoriesInstant: MutableSet<String> = HashSet()
+        var itemObjecResponse:Model? =null
         lateinit var database:Database
         val documentItem: MutableDocument=MutableDocument().setFloat("version", 2.0F)
             .setString("type", "SDK")
