@@ -10,17 +10,16 @@ import com.couchbase.lite.DatabaseConfiguration
 import com.couchbase.lite.MutableDocument
 import fi.sasu.hackernewapp.helperclass
 import java.io.IOException
-import java.lang.reflect.Array.setFloat
+
 
 open class MyApplication : Application() {
-
         var topstoriesInstant: MutableSet<String> = HashSet()
         var newstoriesInstant: MutableSet<String> = HashSet()
         var showstoriesInstant: MutableSet<String> = HashSet()
         var askstoriesInstant: MutableSet<String> = HashSet()
         var jobstoriesInstant: MutableSet<String> = HashSet()
-        var database:Database?=null
-    var documentItem: MutableDocument=MutableDocument().setFloat("version", 2.0F)
+        lateinit var database:Database
+        val documentItem: MutableDocument=MutableDocument().setFloat("version", 2.0F)
             .setString("type", "SDK")
         val helperclass:helperclass= helperclass()
 
@@ -28,18 +27,14 @@ open class MyApplication : Application() {
             super.onCreate()
             instance = this
 
-
             try {
                 val config = DatabaseConfiguration(applicationContext)
                  database = Database("mydb", config)
-
-
-
             }
             catch (e:IOException) {
                 helperclass.naytaToast(e.toString(),applicationContext)
             }
-            database?.save(documentItem)
+            database.save(documentItem)
 
         }
     val requestQueue: RequestQueue? = null

@@ -1,6 +1,5 @@
 package fi.sasu.hackernewapp.fragment
 
-import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -17,7 +16,6 @@ class RecyclerViewAdapter(val itemList:ArrayList<Model>, val listener: (Model) -
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) =holder.bind(itemList[position],listener)
 
-
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         fun bind(model: Model, listener: (Model) -> Unit) = with(itemView) {
     IdTitle.text=model.titleObject
@@ -26,8 +24,7 @@ class RecyclerViewAdapter(val itemList:ArrayList<Model>, val listener: (Model) -
             IdBy.text=model.byObject
             IdTime.text=model.timeObject.toString()
             setOnClickListener { listener(model) }
-        }
-    }
+        } }
 
     fun ViewGroup.inflate(layoutRes: Int): View {
         return LayoutInflater.from(context).inflate(layoutRes, this, false)

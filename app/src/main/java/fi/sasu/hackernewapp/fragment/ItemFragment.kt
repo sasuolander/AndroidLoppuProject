@@ -1,9 +1,7 @@
 package fi.sasu.hackernewapp.fragment
 
 import android.app.Fragment
-import android.content.Context
 import android.os.Bundle
-import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
@@ -13,22 +11,20 @@ import fi.sasu.hackernewapp.R
 import fi.sasu.hackernewapp.helperclass
 import fi.sasu.hackernewapp.itemObject.Model
 
-
 class ItemFragment:Fragment(){
 
-
-    public fun ItemFragment(){
-
-    }
+    public fun ItemFragment(){}
 
     //val itemsFragment:ItemAdapter=ItemAdapter()
-    val itemsForTest=ArrayList<Model>()
-    val helperclass = helperclass()
-
+    private val itemsForTest=ArrayList<Model>()
+    private val helperclass = helperclass()
+    private lateinit var recyclerView:RecyclerView
+    private  lateinit var v:View
+    private lateinit var testi:Model
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        val v:View = LayoutInflater.from(context).inflate(R.layout.itemlayout,container,false)
-        val recyclerView:RecyclerView= RecyclerView(context)
+        v = LayoutInflater.from(context).inflate(R.layout.itemlayout,container,false)
+        recyclerView= RecyclerView(context)
         recyclerView.layoutManager=LinearLayoutManager(context)
         recyclerView.adapter=RecyclerViewAdapter(itemsForTest){
             helperclass.naytaToast("it work",context)
@@ -41,7 +37,7 @@ class ItemFragment:Fragment(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-val testi:Model= Model(1,"testi",0,"testi",0)
+        testi= Model(1,"testi",0,"testi",0)
         itemsForTest.add(testi)
         itemsForTest.add(testi)
         itemsForTest.add(testi)

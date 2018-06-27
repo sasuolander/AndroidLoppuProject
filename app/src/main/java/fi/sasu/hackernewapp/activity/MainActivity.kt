@@ -1,20 +1,14 @@
 package fi.sasu.hackernewapp.activity
 
-
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v4.view.ViewPager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.Menu
 import android.view.MenuItem
-import android.view.ViewManager
 import android.widget.*
-import fi.sasu.hackernewapp.fragment.ItemAdapter
 import fi.sasu.hackernewapp.R
-import fi.sasu.hackernewapp.fragment.ItemFragment
 import fi.sasu.hackernewapp.fragment.RecyclerViewAdapter
 import fi.sasu.hackernewapp.method.RequestApi
 import fi.sasu.hackernewapp.helperclass
@@ -22,14 +16,14 @@ import fi.sasu.hackernewapp.itemObject.Model
 
 
 class MainActivity : AppCompatActivity() {
-    var adapter:ArrayAdapter<String>?=null
-    var helperclass:helperclass=helperclass()
-    var requestApi:RequestApi = RequestApi()
-    lateinit var supportFragment:String
-    lateinit var recyclerView:RecyclerView
-    lateinit var viewManager:LinearLayoutManager
-    lateinit var viewAdapter: RecyclerViewAdapter
-    val itemsForTest2=ArrayList<Model>()
+    private var adapter:ArrayAdapter<String>?=null
+    private var helperclass:helperclass=helperclass()
+    private var requestApi:RequestApi = RequestApi()
+    private lateinit var supportFragment:String
+    private lateinit var recyclerView:RecyclerView
+    private lateinit var viewManager:LinearLayoutManager
+    private lateinit var viewAdapter: RecyclerViewAdapter
+    private val itemsForTest2=ArrayList<Model>()
 
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -52,7 +46,7 @@ class MainActivity : AppCompatActivity() {
         //val viewPager: ViewPager = findViewById(R.id.mainview)
         //val itemAdapter:ItemAdapter = ItemAdapter(supportFragmentManager)
 
-        val testi: Model = Model(1,"testi",0,"testi",0)
+        val testi = Model(1,"testi",0,"testi",0)
         itemsForTest2.add(testi)
         itemsForTest2.add(testi)
         itemsForTest2.add(testi)

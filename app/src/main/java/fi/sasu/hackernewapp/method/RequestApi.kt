@@ -16,35 +16,33 @@ import org.json.JSONArray
 import org.json.JSONObject
 
 class RequestApi  {
-    val helper:helperclass= helperclass()
-    val baseURL:String = "https://hacker-news.firebaseio.com/v0/"
-    val itemURl:String =baseURL+"item/"
-    val topstories:String =baseURL+"topstories.json"
-    val newstories:String =baseURL+"newstories.json"
-    val showstories:String =baseURL+"showstories.json"
-    val askstories:String =baseURL+"askstories.json"
-    val jobstories:String =baseURL+"jobstories.json"
+    private val helper:helperclass= helperclass()
+    private val gson = Gson()
+    private val baseURL:String = "https://hacker-news.firebaseio.com/v0/"
+    private val itemURl:String =baseURL+"item/"
+    private val topstories:String =baseURL+"topstories.json"
+    private val newstories:String =baseURL+"newstories.json"
+    private val showstories:String =baseURL+"showstories.json"
+    private val askstories:String =baseURL+"askstories.json"
+    private val jobstories:String =baseURL+"jobstories.json"
 
 
-
-    val db:Database?=MyApplication.instance?.database
+    private val db:Database?=MyApplication.instance?.database
 
     fun itemobject(id:Int):Model?{
         val jsonID="$id.json"
-        var itemobjecResponse:Model?=null
+        lateinit var itemObjecResponse:Model
         val itemJSONObject =JsonObjectRequest(Request.Method.GET,itemURl+jsonID,null,
                 Response.Listener<JSONObject> { response ->
-
-
-                itemobjecResponse= convertObject(response) },
+                itemObjecResponse= convertObject(response) },
                 Response.ErrorListener { error ->
                     Log.d(helper.userNameForLogging,error.toString()) })
         MyApplication.instance?.addToRequestQueue(itemJSONObject, "json")
-        return itemobjecResponse
+        return itemObjecResponse
     }
     fun topstories() {
 
-        val topstoriesJsonArrayRequest =
+       val  topstoriesJsonArrayRequest =
                 JsonArrayRequest(Request.Method.GET,topstories,null,
                 Response.Listener<JSONArray> { response ->
                     MyApplication.instance?.topstoriesInstant = convert(response) },
@@ -53,33 +51,33 @@ class RequestApi  {
         MyApplication.instance?.addToRequestQueue(topstoriesJsonArrayRequest, "json") }
 
     fun newstories() {
-        val topstoriesJsonArrayRequest =
+       val newstoriesJsonArrayRequest =
                 JsonArrayRequest(Request.Method.GET,newstories,null,
                 Response.Listener<JSONArray> { response ->
                     MyApplication.instance?.newstoriesInstant = convert(response) },
                 Response.ErrorListener { error ->
                     Log.d(helper.userNameForLogging,error.toString()) })
-        MyApplication.instance?.addToRequestQueue(topstoriesJsonArrayRequest, "json") }
+        MyApplication.instance?.addToRequestQueue(newstoriesJsonArrayRequest, "json") }
 
     fun showstories() {
-        val topstoriesJsonArrayRequest =
+        val showstoriesJsonArrayRequest =
                 JsonArrayRequest(Request.Method.GET,showstories,null,
                 Response.Listener<JSONArray> { response ->
                     MyApplication.instance?.showstoriesInstant = convert(response) },
                 Response.ErrorListener { error -> Log.d(helper.userNameForLogging,error.toString()) })
-        MyApplication.instance?.addToRequestQueue(topstoriesJsonArrayRequest, "json") }
+        MyApplication.instance?.addToRequestQueue(showstoriesJsonArrayRequest, "json") }
 
     fun askstories() {
-        val topstoriesJsonArrayRequest =
+       val askstoriesJsonArrayRequest =
                 JsonArrayRequest(Request.Method.GET,askstories,null,
                 Response.Listener<JSONArray> { response ->
                     MyApplication.instance?.askstoriesInstant = convert(response) },
                 Response.ErrorListener { error ->
                     Log.d(helper.userNameForLogging,error.toString()) })
-        MyApplication.instance?.addToRequestQueue(topstoriesJsonArrayRequest, "json") }
+        MyApplication.instance?.addToRequestQueue(askstoriesJsonArrayRequest, "json") }
 
     fun jobstories() {
-        val topstoriesJsonArrayRequest =
+        val jobstoriesJsonArrayRequest =
                 JsonArrayRequest(Request.Method.GET,jobstories,null,
                 Response.Listener<JSONArray> { response ->
                     val setter =MyApplication.instance?.jobstoriesInstant
@@ -88,20 +86,16 @@ class RequestApi  {
                      },
                 Response.ErrorListener { error ->
                     Log.d(helper.userNameForLogging,error.toString()) })
-        MyApplication.instance?.addToRequestQueue(topstoriesJsonArrayRequest, "json") }
+        MyApplication.instance?.addToRequestQueue(jobstoriesJsonArrayRequest, "json") }
 
 
     private fun convertObject (response: JSONObject): Model {
-        //initialize gson object
-        val gson = Gson()
         //get data from gson and assign to object
         val output =gson.fromJson<Model>(response.toString() , Model::class.java)
         output.kidsObject
         return output }
 
     private fun convert (response: JSONArray):MutableSet<String> {
-        //initialize gson object
-        val gson = Gson()
         //get data from gson and assign to object
         val listType = object : TypeToken<MutableSet<String>>() {}.type
         return gson.fromJson<MutableSet<String>>(response.toString(), listType)}

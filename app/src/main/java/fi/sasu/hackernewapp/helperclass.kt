@@ -5,7 +5,6 @@ import android.widget.Toast
 
 class helperclass{
     val userNameForLogging:String ="Sasu"
-
     fun naytaToast(teksti: String,context:Context) {
         val aika = Toast.LENGTH_LONG
         // applicationContext

@@ -2,7 +2,6 @@ package fi.sasu.hackernewapp.service
 
 import android.app.IntentService
 import android.content.Intent
-import com.android.volley.toolbox.Volley
 
 class BackGroundTask : IntentService("BackGroundTask") {
 
