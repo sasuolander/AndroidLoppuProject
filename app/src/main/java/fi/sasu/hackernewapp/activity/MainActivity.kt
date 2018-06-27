@@ -6,14 +6,19 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.view.ViewPager
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.view.Menu
 import android.view.MenuItem
+import android.view.ViewManager
 import android.widget.*
 import fi.sasu.hackernewapp.fragment.ItemAdapter
 import fi.sasu.hackernewapp.R
 import fi.sasu.hackernewapp.fragment.ItemFragment
+import fi.sasu.hackernewapp.fragment.RecyclerViewAdapter
 import fi.sasu.hackernewapp.method.RequestApi
 import fi.sasu.hackernewapp.helperclass
+import fi.sasu.hackernewapp.itemObject.Model
 
 
 class MainActivity : AppCompatActivity() {
@@ -21,6 +26,11 @@ class MainActivity : AppCompatActivity() {
     var helperclass:helperclass=helperclass()
     var requestApi:RequestApi = RequestApi()
     lateinit var supportFragment:String
+    lateinit var recyclerView:RecyclerView
+    lateinit var viewManager:LinearLayoutManager
+    lateinit var viewAdapter: RecyclerViewAdapter
+    val itemsForTest2=ArrayList<Model>()
+
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         val inflater = menuInflater
@@ -42,13 +52,29 @@ class MainActivity : AppCompatActivity() {
         //val viewPager: ViewPager = findViewById(R.id.mainview)
         //val itemAdapter:ItemAdapter = ItemAdapter(supportFragmentManager)
 
+        val testi: Model = Model(1,"testi",0,"testi",0)
+        itemsForTest2.add(testi)
+        itemsForTest2.add(testi)
+        itemsForTest2.add(testi)
+        itemsForTest2.add(testi)
 
+        viewManager = LinearLayoutManager(this)
+        viewAdapter =RecyclerViewAdapter(itemsForTest2 ){
+            helperclass.naytaToast("it work",applicationContext)
+        }
 
-        //add Frangment
+         recyclerView = findViewById<RecyclerView>(R.id.list).apply {
+            // use this setting to improve performance if you know that changes
+            // in content do not change the layout size of the RecyclerView
+            setHasFixedSize(true)
 
+            // use a linear layout manager
+            layoutManager = viewManager
 
+            // specify an viewAdapter (see also next example)
+            adapter = viewAdapter
 
-
+        }
 
     }
 
@@ -67,22 +93,9 @@ class MainActivity : AppCompatActivity() {
 }
 
 /*
-requestApi.jobstories()
-
-val itemX: Item? =requestApi.itemobject(20)
-helperclass.naytaToast(itemX.toString(),applicationContext)
-val listJob:Set<String>? =MyApplication.instance?.jobstoriesInstant
-val x= topstories.getString(0)
-
-Log.d(helperclass.userNameForLogging,x)
-
-        val litview: ListView = findViewById(R.id.list_viewTest)
-
-        if ( listJob !=null && listJob.isNotEmpty()) {
-            adapter = ArrayAdapter(this,
-                    android.R.layout.simple_expandable_list_item_1,
-                    listJob.toTypedArray()
-            )
-            litview.adapter =adapter
-        }
+    requestApi.jobstories()
+    val itemX: Item? =requestApi.itemobject(20)
+    helperclass.naytaToast(itemX.toString(),applicationContext)
+    val listJob:Set<String>? =MyApplication.instance?.jobstoriesInstant
+    val x= topstories.getString(0)
         */
