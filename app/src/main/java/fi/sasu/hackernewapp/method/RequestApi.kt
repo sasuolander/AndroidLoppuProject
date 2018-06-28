@@ -26,7 +26,7 @@ class RequestApi  {
     private val askstories:String =baseURL+"askstories.json"
     private val jobstories:String =baseURL+"jobstories.json"
 
-
+var templateModel=Model()
     private val db:Database?=MyApplication.instance?.database
 
     fun itemobject(id:Int):Model?{
@@ -34,11 +34,14 @@ class RequestApi  {
         //lateinit var itemObjecResponse:Model
         val itemJSONObject =JsonObjectRequest(Request.Method.GET,itemURl+jsonID,null,
                 Response.Listener<JSONObject> { response ->
-                MyApplication.instance?.itemObjecResponse= convertObject(response) },
+                //MyApplication.instance?.itemObjecResponse= convertObject(response)
+
+                templateModel=gson.fromJson<Model>(response.toString() , Model::class.java)
+                },
                 Response.ErrorListener { error ->
                     Log.d(helper.userNameForLogging,error.toString()) })
         MyApplication.instance?.addToRequestQueue(itemJSONObject, "json")
-        return MyApplication.instance?.itemObjecResponse
+        return templateModel
         //try cacth
     }
     fun topstories() {
@@ -92,8 +95,8 @@ class RequestApi  {
 
     private fun convertObject (response: JSONObject): Model {
         //get data from gson and assign to object
-        val output =gson.fromJson<Model>(response.toString() , Model::class.java)
-        output.kidsObject
+        val output:Model =gson.fromJson<Model>(response.toString() , Model::class.java)
+
         return output }
 
     private fun convert (response: JSONArray):MutableSet<String> {

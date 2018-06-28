@@ -16,9 +16,11 @@ data class Model(
     @Expose
     var descendantsObject:Int? =null
 
+    //Actually kids is not a List, it's an Array, so declare kids like this
+    //Integer[] kids;
     @SerializedName("kids")
     @Expose
-    var kidsObject:ArrayList<Id>? = null
+    var kidsObject:List<Int>? = null
 }
 /*
 {
