@@ -71,8 +71,6 @@ class RequestApi  {
                         Log.d(helper.userNameForLogging,MyApplication.instance?.topstoriesInstant.toString())
                     }
                 //}
-
-
             }
             "newstories"->{
                 Log.d(helper.userNameForLogging,"start")
@@ -110,10 +108,6 @@ class RequestApi  {
 
         }
     }
-
-
-
-
 
 
     fun topstories() {
