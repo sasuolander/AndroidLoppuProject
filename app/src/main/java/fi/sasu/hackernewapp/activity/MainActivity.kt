@@ -13,6 +13,7 @@ import fi.sasu.hackernewapp.fragment.RecyclerViewAdapter
 import fi.sasu.hackernewapp.method.RequestApi
 import fi.sasu.hackernewapp.helperclass
 import fi.sasu.hackernewapp.itemObject.Model
+import fi.sasu.hackernewapp.service.MyApplication
 
 
 class MainActivity : AppCompatActivity() {
@@ -46,24 +47,33 @@ class MainActivity : AppCompatActivity() {
         //val viewPager: ViewPager = findViewById(R.id.mainview)
         //val itemAdapter:ItemAdapter = ItemAdapter(supportFragmentManager)
 
-        val testObject2 =requestApi.itemobject(10)
+        //requestApi.itemobjectOne(10)
 
-        if (testObject2===null){
-            helperclass.naytaToast("null",applicationContext)
+        //requestApi.topstories()
+        requestApi.loadItems("topstories")
+
+
+        if(MyApplication.instance?.topstoriesListInstant!=null){
+            val listForView=MyApplication.instance?.topstoriesListInstant
+
+            viewManager = LinearLayoutManager(this)
+            viewAdapter =RecyclerViewAdapter(listForView!!){
+                helperclass.naytaToast("it work",applicationContext)
+            }
         }else{
-            helperclass.naytaToast("toimii",applicationContext)
+            val testi = Model(1,"testi",0,"testi",0)
+            itemsForTest2.add(testi)
+            itemsForTest2.add(testi)
+            itemsForTest2.add(testi)
+            itemsForTest2.add(testi)
+
+            viewManager = LinearLayoutManager(this)
+            viewAdapter =RecyclerViewAdapter(itemsForTest2 ){
+                helperclass.naytaToast("it work",applicationContext)
+            }
         }
 
-        val testi = Model(1,"testi",0,"testi",0)
-        itemsForTest2.add(testi)
-        itemsForTest2.add(testi)
-        itemsForTest2.add(testi)
-        itemsForTest2.add(testi)
 
-        viewManager = LinearLayoutManager(this)
-        viewAdapter =RecyclerViewAdapter(itemsForTest2 ){
-            helperclass.naytaToast("it work",applicationContext)
-        }
 
          recyclerView = findViewById<RecyclerView>(R.id.list).apply {
             // use this setting to improve performance if you know that changes

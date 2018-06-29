@@ -17,7 +17,7 @@ import org.json.JSONObject
 
 class RequestApi  {
     private val helper:helperclass= helperclass()
-    private val gson = Gson()
+
     private val baseURL:String = "https://hacker-news.firebaseio.com/v0/"
     private val itemURl:String =baseURL+"item/"
     private val topstories:String =baseURL+"topstories.json"
@@ -25,31 +25,104 @@ class RequestApi  {
     private val showstories:String =baseURL+"showstories.json"
     private val askstories:String =baseURL+"askstories.json"
     private val jobstories:String =baseURL+"jobstories.json"
+    private val maxCount=10
 
-var templateModel=Model()
     private val db:Database?=MyApplication.instance?.database
 
-    fun itemobject(id:Int):Model?{
+    fun itemobjectOne(id:Int){
         val jsonID="$id.json"
-        //lateinit var itemObjecResponse:Model
-        val itemJSONObject =JsonObjectRequest(Request.Method.GET,itemURl+jsonID,null,
+        val itemJSONObject =JsonObjectRequest(Request.Method.GET,itemURl+jsonID,
+                null,
                 Response.Listener<JSONObject> { response ->
-                //MyApplication.instance?.itemObjecResponse= convertObject(response)
-
-                templateModel=gson.fromJson<Model>(response.toString() , Model::class.java)
-                },
+                    //response is working
+                    MyApplication.instance?.itemObjecResponse=convertObject(response)
+                    Log.d(helper.userNameForLogging,MyApplication.instance?.
+                            itemObjecResponse.toString()) },
                 Response.ErrorListener { error ->
                     Log.d(helper.userNameForLogging,error.toString()) })
         MyApplication.instance?.addToRequestQueue(itemJSONObject, "json")
-        return templateModel
-        //try cacth
     }
-    fun topstories() {
 
+    fun loadItems(name:String){
+        when (name){
+            "topstories"->{
+                Log.d(helper.userNameForLogging,"start")
+                var counter = 0
+                //while (counter<=maxCount){
+                    //counter++
+                topstories()
+                    if(MyApplication.instance?.topstoriesInstant!!.isNotEmpty()){
+                        val idList = MyApplication.instance?.topstoriesInstant
+                        Log.d("list is not empty",idList.toString())
+                        for (id in idList!!){
+                            val jsonID="$id.json"
+                            val itemJSONObject =JsonObjectRequest(Request.Method.GET,
+                                    itemURl+jsonID,null,
+                                    Response.Listener<JSONObject> { response ->
+                                        MyApplication.instance?.topstoriesListInstant!!.
+                                                add(convertObject(response))
+                                    },
+                                    Response.ErrorListener { error ->
+                                        Log.d(helper.userNameForLogging,error.toString()) })
+                            MyApplication.instance?.addToRequestQueue(itemJSONObject, "json")
+                        }
+                    }else{
+                        Log.d(helper.userNameForLogging,"list is empty")
+                        Log.d(helper.userNameForLogging,MyApplication.instance?.topstoriesInstant.toString())
+                    }
+                //}
+
+
+            }
+            "newstories"->{
+                Log.d(helper.userNameForLogging,"start")
+                if(MyApplication.instance?.newstoriesInstant!==null){
+                    val idList = MyApplication.instance?.newstoriesInstant
+                }else{
+                    Log.d(helper.userNameForLogging,"list is empty")
+                }
+            }
+            "showstories"->{
+                Log.d(helper.userNameForLogging,"start")
+                if(MyApplication.instance?.showstoriesInstant!==null){
+                    val idList =MyApplication.instance?.showstoriesInstant
+                }else{
+                    Log.d(helper.userNameForLogging,"list is empty")
+                }
+            }
+            "askstories"->{Log.d(helper.userNameForLogging,"start")
+                if(MyApplication.instance?.askstoriesInstant!==null){
+                    val idList =MyApplication.instance?.askstoriesInstant
+
+                }else{
+                    Log.d(helper.userNameForLogging,"list is empty")
+                }
+            }
+            "jobstories"->{Log.d(helper.userNameForLogging,"start")
+                if(MyApplication.instance?.jobstoriesInstant!==null){
+                    val idList =MyApplication.instance?.jobstoriesInstant
+
+                }else{
+                    Log.d(helper.userNameForLogging,"list is empty")
+                }
+            }
+            else ->Log.d(helper.userNameForLogging,"wrong list")
+
+        }
+    }
+
+
+
+
+
+
+    fun topstories() {
        val  topstoriesJsonArrayRequest =
                 JsonArrayRequest(Request.Method.GET,topstories,null,
                 Response.Listener<JSONArray> { response ->
-                    MyApplication.instance?.topstoriesInstant = convert(response) },
+                    MyApplication.instance?.topstoriesInstant = convert(response)
+                Log.d("topstories",MyApplication.instance?.topstoriesInstant.toString())
+                },
                 Response.ErrorListener { error ->
                     Log.d(helper.userNameForLogging,error.toString()) })
         MyApplication.instance?.addToRequestQueue(topstoriesJsonArrayRequest, "json") }
@@ -95,12 +168,14 @@ var templateModel=Model()
 
     private fun convertObject (response: JSONObject): Model {
         //get data from gson and assign to object
+        val gson = Gson()
         val output:Model =gson.fromJson<Model>(response.toString() , Model::class.java)
 
         return output }
 
     private fun convert (response: JSONArray):MutableSet<String> {
         //get data from gson and assign to object
+        val gson = Gson()
         val listType = object : TypeToken<MutableSet<String>>() {}.type
         return gson.fromJson<MutableSet<String>>(response.toString(), listType)}
 }

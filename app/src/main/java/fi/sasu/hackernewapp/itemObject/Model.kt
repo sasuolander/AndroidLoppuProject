@@ -4,7 +4,7 @@ import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
 data class Model(
-        @SerializedName("id") @Expose var idObject:Int? =null,
+        @SerializedName("id") @Expose  var idObject:Int? =null,
         @SerializedName("title") @Expose var titleObject:String?=null,
         @SerializedName("score") @Expose var scoreObject:Int? =null,
         @SerializedName("by") @Expose var byObject:String? =null,

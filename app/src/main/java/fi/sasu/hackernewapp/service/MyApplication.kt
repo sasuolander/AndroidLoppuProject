@@ -11,6 +11,7 @@ import com.couchbase.lite.DatabaseConfiguration
 import com.couchbase.lite.MutableDocument
 import fi.sasu.hackernewapp.helperclass
 import fi.sasu.hackernewapp.itemObject.Model
+import fi.sasu.hackernewapp.method.RequestApi
 import java.io.IOException
 
 
@@ -21,6 +22,14 @@ open class MyApplication : Application() {
         var askstoriesInstant: MutableSet<String> = HashSet()
         var jobstoriesInstant: MutableSet<String> = HashSet()
         var itemObjecResponse:Model? =null
+    val requestApi= RequestApi()
+        var topstoriesListInstant = ArrayList<Model>()
+        var newstoriesListInstant = ArrayList<Model>()
+        var showstorieListsInstant = ArrayList<Model>()
+        var askstoriesListInstant = ArrayList<Model>()
+        var jobstoriesListInstant = ArrayList<Model>()
+
+
         lateinit var database:Database
         val documentItem: MutableDocument=MutableDocument().setFloat("version", 2.0F)
             .setString("type", "SDK")
@@ -29,6 +38,8 @@ open class MyApplication : Application() {
         override fun onCreate() {
             super.onCreate()
             instance = this
+            topstoriesInstant.size
+
 
             try {
                 val config = DatabaseConfiguration(applicationContext)
