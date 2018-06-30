@@ -5,30 +5,26 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.TabLayout
 import android.support.v4.view.ViewPager
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.Menu
 import android.view.MenuItem
 import fi.sasu.hackernewapp.R
-import fi.sasu.hackernewapp.fragment.ItemAdapter
-import fi.sasu.hackernewapp.fragment.ItemFragment
-import fi.sasu.hackernewapp.fragment.RecyclerViewAdapter
+import fi.sasu.hackernewapp.adapter.ItemAdapter
+import fi.sasu.hackernewapp.fragment.*
 import fi.sasu.hackernewapp.method.RequestApi
 import fi.sasu.hackernewapp.helperclass
-import fi.sasu.hackernewapp.itemObject.Model
-import fi.sasu.hackernewapp.service.MyApplication
 
 class MainActivity : AppCompatActivity() {
     private var helperclass:helperclass=helperclass()
     private var requestApi:RequestApi = RequestApi()
     private lateinit var supportFragment:String
-    private lateinit var adapter:ItemAdapter
+    private lateinit var adapter: ItemAdapter
     private lateinit var viewPager:ViewPager
     private lateinit var tab:TabLayout
-    val itemFragment: ItemFragment =ItemFragment()
-
-
-
+    val askstories:AskstoriesFragment= AskstoriesFragment()
+    val jobstories:JobstoriesFragment= JobstoriesFragment()
+    val newstories:NewstoriesFragment= NewstoriesFragment()
+    val showstories:ShowstoriesFragment= ShowstoriesFragment()
+    val topstories: TopstoriesFragment =TopstoriesFragment()
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         val inflater = menuInflater
         inflater.inflate(R.menu.menu, menu)
@@ -36,14 +32,23 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when (item.itemId){
         R.id.reload ->{
-            this.startActivity(Intent(this@MainActivity, this@MainActivity::class.java))
+            this.startActivity(Intent(this@MainActivity,
+                    this@MainActivity::class.java))
             true }
         R.id.loadlist->{
             requestApi.topstories()
+            requestApi.askstories()
+            requestApi.jobstories()
+            requestApi.newstories()
+            requestApi.showstories()
             helperclass.naytaToast("pressed",applicationContext)
             true }
         R.id.loaditems->{
             requestApi.loadItems("topstories")
+            requestApi.loadItems("newstories")
+            requestApi.loadItems("showstories")
+            requestApi.loadItems("askstories")
+            requestApi.loadItems("jobstories")
             helperclass.naytaToast("pressed",applicationContext)
             true }
         else ->super.onOptionsItemSelected(item) }
@@ -54,12 +59,13 @@ class MainActivity : AppCompatActivity() {
         tab =findViewById(R.id.tab)
         adapter = ItemAdapter(supportFragmentManager)
 
-        adapter.addFragment(itemFragment,"item")
+        adapter.addFragment(askstories,"Ask Stories")
+        adapter.addFragment(jobstories,"Job Stories")
+        adapter.addFragment(newstories,"New Stories")
+        adapter.addFragment(showstories,"Show Stories")
+        adapter.addFragment(topstories,"Top Stories")
         viewPager.adapter=adapter
         tab.setupWithViewPager(viewPager)
-
-
-
     }
 
     /* override fun onPause() {

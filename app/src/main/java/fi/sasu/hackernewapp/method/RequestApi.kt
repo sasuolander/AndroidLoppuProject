@@ -24,7 +24,7 @@ class RequestApi  {
     private val showstories:String =baseURL+"showstories.json"
     private val askstories:String =baseURL+"askstories.json"
     private val jobstories:String =baseURL+"jobstories.json"
-    private val maxCount=20
+    private val maxCount=10
     private val db:Database?=MyApplication.instance?.database
     fun itemobjectOne(id:Int){
         val jsonID="$id.json"
