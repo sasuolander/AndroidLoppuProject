@@ -16,7 +16,6 @@ import fi.sasu.hackernewapp.helperclass
 class MainActivity : AppCompatActivity() {
     private var helperclass:helperclass=helperclass()
     private var requestApi:RequestApi = RequestApi()
-    private lateinit var supportFragment:String
     private lateinit var adapter: ItemAdapter
     private lateinit var viewPager:ViewPager
     private lateinit var tab:TabLayout
