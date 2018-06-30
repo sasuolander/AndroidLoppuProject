@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/fragmentpage"
-    android:title="@string/fragment"
+        android:id="@+id/reload"
+    android:title="@string/reload"
     />
     <item
-        android:id="@+id/dummy2"
-        android:title="@string/dummy"
+        android:id="@+id/loadlist"
+        android:title="@string/loadlist"
         />
     <item
-        android:id="@+id/dummy3"
-        android:title="@string/dummy"
+        android:id="@+id/loaditems"
+        android:title="@string/loaditems"
         />
+
 
 </menu>

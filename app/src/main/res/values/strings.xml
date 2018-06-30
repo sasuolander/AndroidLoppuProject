@@ -1,5 +1,12 @@
 <resources>
     <string name="app_name">HackerNewApp</string>
     <string name="dummy">dummy</string>
-    <string name="fragment">fragment</string>
+    <string name="reload">reload</string>
+   <string name="loadlist">loadlist</string>
+    <string name="loaditems">loaditem</string>
+    <string name="time">Time</string>
+    <string name="by">By </string>
+    <string name="source">Source</string>
+    <string name="score">Score</string>
+    <string name="title">Title</string>
 </resources>

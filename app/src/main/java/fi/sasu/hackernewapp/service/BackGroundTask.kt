@@ -8,15 +8,9 @@ class BackGroundTask : IntentService("BackGroundTask") {
 
     val requestApi=RequestApi()
     override fun onHandleIntent(p0: Intent?) {
-
     }
     //val queue = Volley.newRequestQueue(this)
-
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-
         return super.onStartCommand(intent, flags, startId)
-
-
     }
-
 }

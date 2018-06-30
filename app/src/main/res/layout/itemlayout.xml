@@ -5,45 +5,85 @@
     android:layout_height="wrap_content"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/alla"
+        android:id="@+id/Onefield"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:orientation="horizontal">
-        <TextView
-            android:layout_width="30dp"
-            android:layout_height="20dp"
-            android:id="@+id/IdTitle"
-            android:text="Title" />
-        <TextView
-            android:layout_width="30dp"
-            android:layout_height="20dp"
-            android:id="@+id/IdUrl"
-            android:text="url" />
-    </LinearLayout>
 
+        <TextView
+            android:id="@+id/Title"
+            android:layout_width="52dp"
+            android:layout_height="20dp"
+            android:text="@string/title" />
+
+        <TextView
+            android:id="@+id/IdTitle"
+            android:layout_width="175dp"
+            android:layout_height="20dp"
+            android:text="Title" />
+
+        <TextView
+            android:id="@+id/Score"
+            android:layout_width="51dp"
+            android:layout_height="20dp"
+            android:text="@string/score" />
+
+        <TextView
+            android:id="@+id/IdScore"
+            android:layout_width="54dp"
+            android:layout_height="20dp"
+            android:text="score" />
+    </LinearLayout>
+   <LinearLayout
+       android:id="@+id/Secondfield"
+       android:layout_below="@+id/Onefield"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:gravity="center_horizontal"
+       android:orientation="horizontal">
+
+       <TextView
+           android:id="@+id/Url"
+           android:layout_width="60dp"
+           android:layout_height="20dp"
+           android:text="@string/source" />
+
+       <TextView
+           android:id="@+id/IdUrl"
+           android:layout_width="250dp"
+           android:layout_height="20dp"
+           android:text="url" />
+   </LinearLayout>
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/alla"
+        android:layout_below="@+id/Secondfield"
         android:gravity="center_horizontal"
         android:orientation="horizontal">
+
         <TextView
+            android:id="@+id/Time"
             android:layout_width="45dp"
             android:layout_height="20dp"
-            android:id="@+id/IdScore"
-            android:text="score" />
+            android:text="@string/time" />
 
         <TextView
+            android:id="@+id/IdTime"
+            android:layout_width="136dp"
+            android:layout_height="20dp"
+            android:text="TimeField" />
+
+        <TextView
+            android:id="@+id/By"
             android:layout_width="40dp"
             android:layout_height="20dp"
-            android:id="@+id/IdTime"
-            android:text="Time" />
+            android:text="@string/by" />
 
         <TextView
-            android:layout_width="30dp"
-            android:layout_height="20dp"
             android:id="@+id/IdBy"
-            android:text="By" />
+            android:layout_width="118dp"
+            android:layout_height="20dp"
+            android:text="ByField" />
     </LinearLayout>
 </RelativeLayout>

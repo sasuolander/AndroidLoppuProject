@@ -18,14 +18,12 @@ class RecyclerViewAdapter(val itemList:ArrayList<Model>, val listener: (Model) -
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         fun bind(model: Model, listener: (Model) -> Unit) = with(itemView) {
-    IdTitle.text=model.titleObject
+            IdTitle.text=model.titleObject
             IdUrl.text=model.urlObject
             IdScore.text=model.scoreObject.toString()
             IdBy.text=model.byObject
-            IdTime.text=model.timeObject.toString()
-            setOnClickListener { listener(model) }
-        } }
-
+            IdTime.text= model.convert(model.timeObject!!).toString()
+            setOnClickListener { listener(model) } } }
     fun ViewGroup.inflate(layoutRes: Int): View {
         return LayoutInflater.from(context).inflate(layoutRes, this, false)
     }

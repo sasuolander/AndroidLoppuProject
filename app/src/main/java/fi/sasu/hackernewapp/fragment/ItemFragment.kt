@@ -20,7 +20,6 @@ class ItemFragment:Fragment(){
     private val helperclass = helperclass()
     private lateinit var recyclerView:RecyclerView
     private  lateinit var v:View
-    private lateinit var testi:Model
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View {
         v = LayoutInflater.from(context).inflate(R.layout.itemlayout,container,false)
@@ -37,10 +36,5 @@ class ItemFragment:Fragment(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        testi= Model(1,"testi",0,"testi",0)
-        itemsForTest.add(testi)
-        itemsForTest.add(testi)
-        itemsForTest.add(testi)
-        itemsForTest.add(testi)
     }
 }

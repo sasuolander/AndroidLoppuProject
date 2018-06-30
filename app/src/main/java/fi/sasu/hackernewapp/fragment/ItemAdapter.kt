@@ -14,7 +14,7 @@ class ItemAdapter(fm: FragmentManager) : FragmentPagerAdapter( fm) {
     }
 
     override fun getCount(): Int {
-       return itemFragmentList.keys.size
+        return itemFragmentList.keys.size
     }
 
 
