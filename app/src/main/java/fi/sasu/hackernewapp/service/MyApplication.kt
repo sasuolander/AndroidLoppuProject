@@ -13,15 +13,15 @@ import fi.sasu.hackernewapp.itemObject.Model
 import java.io.IOException
 
 open class MyApplication : Application() {
-    val topstoriesInstant: MutableSet<String> = HashSet()
+    var topstoriesInstant: MutableSet<String> = HashSet()
     val topstoriesListInstant = ArrayList<Model>()
-    val newstoriesInstant: MutableSet<String> = HashSet()
+    var newstoriesInstant: MutableSet<String> = HashSet()
     val newstoriesListInstant = ArrayList<Model>()
-    val showstoriesInstant: MutableSet<String> = HashSet()
+    var showstoriesInstant: MutableSet<String> = HashSet()
     val showstoriesListInstant = ArrayList<Model>()
-    val askstoriesInstant: MutableSet<String> = HashSet()
+    var askstoriesInstant: MutableSet<String> = HashSet()
     val askstoriesListInstant = ArrayList<Model>()
-    val jobstoriesInstant: MutableSet<String> = HashSet()
+    var jobstoriesInstant: MutableSet<String> = HashSet()
     val jobstoriesListInstant = ArrayList<Model>()
     var itemObjecResponse:Model? =null
     lateinit var database:Database
